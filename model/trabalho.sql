@@ -9,7 +9,7 @@ CREATE DATABASE trabalho;
 --
 
 CREATE TABLE produtos(
-  prd_id int NOT NULL,
+  prd_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   prd_nome varchar(180) NOT NULL,
   prd_quantidade int NOT NULL,
   prd_preco decimal(10,2) NOT NULL,
@@ -17,9 +17,3 @@ CREATE TABLE produtos(
   prd_data_cad date NOT NULL,
   prd_hora_cad time NOT NULL
 );
-
---
--- Índices de tabela produtos
---
-
-ALTER TABLE produtos ADD PRIMARY KEY (prd_id);
