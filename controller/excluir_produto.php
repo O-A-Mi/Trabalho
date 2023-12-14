@@ -13,7 +13,6 @@
             exit;
         }
     }else{
-        echo "<script>window.alert('ID do produto inválido.');</script>";
         $conexao->close();
         header('Location: ../view/paginas/excluir.php');
         exit;

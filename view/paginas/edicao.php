@@ -38,6 +38,9 @@
                                 echo "Erro na consulta: " . $conexao->error;
                             }
                         ?>
+                        <tr>
+                            <td align="center" colspan="2"><button type="submit">Pesquisar</button></td>
+                        </tr>
                 </table>
             </form>
             <?php
@@ -100,7 +103,6 @@
                         }
                         $conexao->close();
                     }else{
-                        echo "<script>window.alert('Erro na consulta. Vamos recarregar a página!');</script>";
                         $conexao->close();
                         header('Location: edicao.php');
                     }
