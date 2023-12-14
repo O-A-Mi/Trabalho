@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css/estilo.css">
+        <link rel="stylesheet" href="../css/estilo copy.css">
         <title>Cadastro</title>
         <script src="../js/script.js"></script>
     </head>
@@ -36,12 +36,8 @@
                     </tr>
                     <tr>
                         <td>
-                            <label>Data: <?php echo ''.date('d/m/Y').'' ?></label>
-                            <input type="hidden" name="data" value="<?php echo ''.date('Y-m-d').'' ?>">
-                        </td>
-                        <td>
-                            <label>Hora: <?php echo ''.date('H:i:s').'' ?></label>
-                            <input type="hidden" name="hora" value="<?php echo ''.date('H:i:s').'' ?>">
+                            <label>Data e Hora:</label>
+                            <input type="datetime-local" name="data" <?php echo 'value="'.date('Y-m-d').'T'.date('H:i').'"'?>>
                         </td>
                     </tr>
                     <tr>

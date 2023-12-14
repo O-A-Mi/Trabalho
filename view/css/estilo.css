@@ -10,7 +10,7 @@ header{
     color: white;
     height: 40px;
     padding: 15px;
-    box-shadow: 0px 10px 20px 0px rgba(100, 100, 110, 0.5);
+    box-shadow: 0px 10px 20px 0px rgba(72, 63, 93, 0.5);
 }
 
 nav{
@@ -71,6 +71,18 @@ input, textarea{
     transition: border-color 0.3s ease;
 }
 
+input[type=datetime-local]{
+    width: min-content;
+    padding: 6px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 2px solid #888;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
 input:focus,textarea:focus{
     outline: none;
     border-color: #555;
@@ -118,12 +130,19 @@ button:hover{
     background-color: white;
     padding: 20px;
     border-radius: 8px;
+    border-spacing: 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .thHeader{
     color: #333;
     padding-bottom: 6px;
+    border-bottom: 1px solid #555;
+}
+
+.tdInfo{
+    color: #333;
+    padding: 8px;
     border-bottom: 1px solid #555;
 }
 

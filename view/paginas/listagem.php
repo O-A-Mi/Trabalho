@@ -14,23 +14,25 @@
                 <?php
                     require_once '../../model/conexao.php';
 
-                    $sql = "SELECT prd_id, prd_nome, prd_quantidade, prd_preco, prd_descricao FROM produtos";
+                    $sql = "SELECT prd_id, prd_nome, prd_quantidade, prd_preco, prd_data_cad, prd_hora_cad FROM produtos";
                     $resultado = $conexao->query($sql);
 
                     if ($resultado){
                         if ($resultado->num_rows > 0){
                             echo '  <tr>
                                         <th class="thHeader" align="left">Nome</th>
-                                        <th class="thHeader" align="center">Descrição</th>
-                                        <th class="thHeader" width="20%" align="right">Preço</th>
                                         <th class="thHeader" width="20%" align="right">Quantidade</th>
+                                        <th class="thHeader" width="20%" align="right">Preço</th>
+                                        <th class="thHeader" width="20%" align="center">Data de Cadastro</th>
                                     </tr>';
                             while ($linha = $resultado->fetch_assoc()){
+                                $data = date_create($linha['prd_data_cad']);
+                                $hora = date_create($linha['prd_hora_cad']);
                                 echo '<tr>
                                         <td class="tdInfo" nowrap="nowrap" align="left">'.$linha['prd_nome'].'</td>
-                                        <td class="tdInfo" align="center">'.$linha['prd_descricao'].'</td>
-                                        <td class="tdInfo" nowrap="nowrap" align="right">R$ '.number_format($linha['prd_preco'], 2, ',', '.').'</td>
                                         <td class="tdInfo" nowrap="nowrap" align="right">'.$linha['prd_quantidade'].'</td>
+                                        <td class="tdInfo" nowrap="nowrap" align="right">R$ '.number_format($linha['prd_preco'], 2, ',', '.').'</td>
+                                        <td class="tdInfo" nowrap="nowrap" align="center">'.date_format($data, "d/m/Y").' às '.date_format($hora, "H:i:s").'</td>
                                     </tr>';
                             }
                         }else{

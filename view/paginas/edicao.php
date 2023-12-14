@@ -15,12 +15,12 @@
         <section class="container">
             <form action="edicao.php?psq=Sim" method="post" name="pesquisa">
                 <table width="100%">
-                    <tr>
                         <?php
                             $sql = "SELECT prd_id, prd_nome FROM produtos";
                             $resultado = $conexao->query($sql);
                 
                             if ($resultado){
+                                echo '<tr>';
                                 if ($resultado->num_rows > 0){
                                     echo '
                                         <td>
@@ -33,14 +33,11 @@
                                 }else{
                                     echo '<td align="center">Nenhum produto encontrado.</td>';
                                 }
+                                echo '</tr>';
                             }else{
                                 echo "Erro na consulta: " . $conexao->error;
                             }
                         ?>
-                    </tr>
-                    <tr>
-                        <td align="right" colspan="2"><button type="submit">Pesquisar</button></td>
-                    </tr>
                 </table>
             </form>
             <?php
@@ -50,14 +47,14 @@
 
                         $id = $_POST['produto'];
 
-                        $sql = "SELECT prd_nome, prd_quantidade, prd_preco, prd_descricao FROM produtos WHERE prd_id = $id";
+                        $sql = "SELECT prd_nome, prd_quantidade, prd_preco, prd_descricao, prd_data_cad, prd_hora_cad FROM produtos WHERE prd_id = $id";
                         $pesquisa = $conexao->query($sql);
 
                         if ($pesquisa){
                             $linha = $pesquisa->fetch_assoc();
                             if (!is_null($linha['prd_nome']) && !is_null($linha['prd_preco']) && !is_null($linha['prd_quantidade']) && !is_null($linha['prd_descricao'])){
                                 echo '
-                                <form action="../../controller/edicao_produto.php" method="post" name="cadastro_produto">
+                                <form style="margin-top: 40px;" action="../../controller/edicao_produto.php" method="post" name="cadastro_produto">
                                     <input type="hidden" value="'.$id.'" name="id">
                                     <table width="100%">
                                         <tr>
@@ -80,6 +77,12 @@
                                             <td colspan="2">
                                                 <label>Descrição:</label>
                                                 <textarea id="textarea" name="descricao" oninput="mudaTamanho()">'.$linha['prd_descricao'].'</textarea>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Data e Hora:</label>
+                                                <input type="datetime-local" name="data" value="'.$linha['prd_data_cad'].'T'.date('H:i', strtotime($linha['prd_hora_cad'])).'">
                                             </td>
                                         </tr>
                                         <tr>

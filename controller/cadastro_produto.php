@@ -6,10 +6,9 @@
     $preco = $_POST['preco'];
     $descricao = $_POST['descricao'];
     $data = $_POST['data'];
-    $hora = $_POST['hora'];
 
     $sql = "INSERT INTO produtos (prd_nome, prd_quantidade, prd_preco, prd_descricao, prd_data_cad, prd_hora_cad) 
-            VALUES ('$nome', $quantidade, $preco, '$descricao', DATE('$data'), TIME('$hora'))";
+            VALUES ('$nome', $quantidade, $preco, '$descricao', DATE('$data'), TIME('$data'))";
     $resultado = $conexao->query($sql);
 
     if ($resultado){
