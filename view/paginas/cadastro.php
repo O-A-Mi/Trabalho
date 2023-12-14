@@ -8,6 +8,7 @@
         <script src="../js/script.js"></script>
     </head>
     <body>
+        <!---Incluindo o menu lateral, feito como um código a parte para não ser repetido diversas vezes em todas as páginas--->
         <?php include '../php/menu.php'; ?>
         <section class="container">
             <form action="../../controller/cadastro_produto.php" method="post" name="cadastro_produto">

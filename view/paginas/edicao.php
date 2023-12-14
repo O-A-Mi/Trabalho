@@ -8,6 +8,7 @@
         <script src="../js/script.js"></script>
     </head>
     <body>
+        <!---Incluindo o menu lateral, e requisitando o arquivo de conexão com o banco de dados--->
         <?php
             include '../php/menu.php';
             require_once '../../model/conexao.php';
@@ -15,16 +16,19 @@
         <section class="container">
             <form action="edicao.php?psq=Sim" method="post" name="pesquisa">
                 <table width="100%">
+                        <!---Selecionando as informações do banco--->
                         <?php
                             $sql = "SELECT prd_id, prd_nome FROM produtos";
                             $resultado = $conexao->query($sql);
-                
+
                             if ($resultado){
                                 echo '<tr>';
+                                /*****Caso a consulta retorne produtos*****/
                                 if ($resultado->num_rows > 0){
                                     echo '
                                         <td>
                                             <select name="produto" class="formSelect">';
+                                                /*****Fazendo um loop dos produtos encontrados pela consulta*****/
                                                 while ($linha = $resultado->fetch_assoc()){
                                                     echo '<option value="'.$linha['prd_id'].'">'.$linha['prd_nome'].'</option>';
                                                 }
@@ -56,8 +60,9 @@
                         if ($pesquisa){
                             $linha = $pesquisa->fetch_assoc();
                             if (!is_null($linha['prd_nome']) && !is_null($linha['prd_preco']) && !is_null($linha['prd_quantidade']) && !is_null($linha['prd_descricao'])){
+                                /*****Imprimindo as informações para edição*****/
                                 echo '
-                                <form style="margin-top: 40px;" action="../../controller/edicao_produto.php" method="post" name="cadastro_produto">
+                                <form style="margin-top: 40px;" action="../../controller/edicao_produto.php" method="post" name="edicao_produto">
                                     <input type="hidden" value="'.$id.'" name="id">
                                     <table width="100%">
                                         <tr>

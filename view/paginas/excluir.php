@@ -8,9 +8,11 @@
         <script src="../js/script.js"></script>
     </head>
     <body>
+        <!---Incluindo o menu lateral, feito como um código a parte para não ser repetido diversas vezes em todas as páginas--->
         <?php include '../php/menu.php'; ?>
         <section class="container">
             <table class="tbPrincipal">
+                <!---Selecionando as informações do banco--->
                 <?php
                     require_once '../../model/conexao.php';
 
@@ -18,6 +20,7 @@
                     $resultado = $conexao->query($sql);
 
                     if ($resultado){
+                        /*****Caso a consulta retorne produtos*****/
                         if ($resultado->num_rows > 0){
                             echo '  <tr>
                                         <th class="thHeader" align="left">Nome</th>
@@ -26,6 +29,7 @@
                                         <th class="thHeader" width="20%" align="center">Data de Cadastro</th>
                                         <th class="thHeader" width="1"></th>
                                     </tr>';
+                            /*****Fazendo um loop dos produtos encontrados pela consulta*****/
                             while ($linha = $resultado->fetch_assoc()){
                                 $data = date_create($linha['prd_data_cad']);
                                 $hora = date_create($linha['prd_hora_cad']);
